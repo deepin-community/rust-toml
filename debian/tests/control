@@ -1,0 +1,24 @@
+Test-Command: /usr/share/cargo/bin/cargo-auto-test toml 0.5.8 --all-targets --all-features
+Features: test-name=rust-toml:@
+Depends: dh-cargo (>= 18), librust-serde-derive-1+default-dev, librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test toml 0.5.8 --all-targets 
+Features: test-name=librust-toml-dev:default
+Depends: dh-cargo (>= 18), librust-serde-derive-1+default-dev, librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test toml 0.5.8 --all-targets --no-default-features
+Features: test-name=librust-toml-dev:
+Depends: dh-cargo (>= 18), librust-serde-derive-1+default-dev, librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test toml 0.5.8 --all-targets --no-default-features --features preserve_order
+Features: test-name=librust-toml+indexmap-dev:preserve_order
+Depends: dh-cargo (>= 18), librust-serde-derive-1+default-dev, librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test toml 0.5.8 --all-targets --no-default-features --features indexmap
+Features: test-name=librust-toml+indexmap-dev:indexmap
+Depends: dh-cargo (>= 18), librust-serde-derive-1+default-dev, librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable

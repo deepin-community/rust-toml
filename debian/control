@@ -1,0 +1,64 @@
+Source: rust-toml
+Section: rust
+Priority: optional
+Build-Depends: debhelper (>= 12),
+ dh-cargo (>= 24),
+ cargo:native <!nocheck>,
+ rustc:native <!nocheck>,
+ libstd-rust-dev <!nocheck>,
+ librust-serde-1+default-dev (>= 1.0.97-~~) <!nocheck>
+Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>
+Uploaders:
+ kpcyrd <git@rxv.cc>
+Standards-Version: 4.5.1
+Vcs-Git: https://salsa.debian.org/rust-team/debcargo-conf.git [src/toml]
+Vcs-Browser: https://salsa.debian.org/rust-team/debcargo-conf/tree/master/src/toml
+Homepage: https://github.com/alexcrichton/toml-rs
+Rules-Requires-Root: no
+
+Package: librust-toml-dev
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librust-serde-1+default-dev (>= 1.0.97-~~)
+Suggests:
+ librust-toml+indexmap-dev (= ${binary:Version})
+Provides:
+ librust-toml+default-dev (= ${binary:Version}),
+ librust-toml-0-dev (= ${binary:Version}),
+ librust-toml-0+default-dev (= ${binary:Version}),
+ librust-toml-0.5-dev (= ${binary:Version}),
+ librust-toml-0.5+default-dev (= ${binary:Version}),
+ librust-toml-0.5.8-dev (= ${binary:Version}),
+ librust-toml-0.5.8+default-dev (= ${binary:Version})
+Description: Native Rust encoder and decoder of TOML-formatted files and streams - Rust source code
+ Provides implementations of the standard Serialize/Deserialize traits for TOML
+ data to facilitate deserializing and serializing Rust structures.
+ .
+ This package contains the source for the Rust toml crate, packaged by debcargo
+ for use with cargo and dh-cargo.
+
+Package: librust-toml+indexmap-dev
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librust-toml-dev (= ${binary:Version}),
+ librust-indexmap-1+default-dev
+Provides:
+ librust-toml+preserve-order-dev (= ${binary:Version}),
+ librust-toml-0+indexmap-dev (= ${binary:Version}),
+ librust-toml-0+preserve-order-dev (= ${binary:Version}),
+ librust-toml-0.5+indexmap-dev (= ${binary:Version}),
+ librust-toml-0.5+preserve-order-dev (= ${binary:Version}),
+ librust-toml-0.5.8+indexmap-dev (= ${binary:Version}),
+ librust-toml-0.5.8+preserve-order-dev (= ${binary:Version})
+Description: Native Rust encoder and decoder of TOML-formatted files and streams - feature "indexmap" and 1 more
+ Provides implementations of the standard Serialize/Deserialize traits for TOML
+ data to facilitate deserializing and serializing Rust structures.
+ .
+ This metapackage enables feature "indexmap" for the Rust toml crate, by pulling
+ in any additional dependencies needed by that feature.
+ .
+ Additionally, this package also provides the "preserve_order" feature.
